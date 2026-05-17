@@ -1,0 +1,23 @@
+name: Hello DevOps 
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Print a greeting
+        run: echo "Hello, DevOps! Running on $(uname -a)"
+
+      - name: List files
+        run: ls -la
+
+      - name: Verify README exists
+        run: test -f README.md && echo " README found"
